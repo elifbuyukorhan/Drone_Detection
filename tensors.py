@@ -1,7 +1,7 @@
 import torch
 import numpy as np
 
-'''
+
 #directly from data
 data = [[1, 2],[3, 4]]
 x_data = torch.tensor(data)
@@ -17,9 +17,9 @@ x_ones = torch.ones_like(x_data) # retains the properties of x_data
 print(f"Ones Tensor: \n {x_ones} \n")
 
 x_rand = torch.rand_like(x_data, dtype=torch.float) # overrides the datatype of x_data
-print(f"Random Tensor: \n {x_rand} \n")'''
+print(f"Random Tensor: \n {x_rand} \n")
 
-'''
+
 #With random and constant values
 shape = (2,3,)
 rand_tensor = torch.rand(shape)
@@ -28,9 +28,9 @@ zeros_tensor = torch.zeros(shape)
 
 print(f"Random Tensor: \n {rand_tensor} \n")
 print(f"Ones Tensor: \n {ones_tensor} \n")
-print(f"Zeros Tensor: \n {zeros_tensor}")'''
+print(f"Zeros Tensor: \n {zeros_tensor}")
 
-'''
+
 #Attributes of a Tensor
 tensor = torch.rand(3,4)
 
@@ -45,15 +45,15 @@ print(f"Tensor: {tensor}")
 # We move our tensor to the GPU if available
 if torch.cuda.is_available():
     tensor = tensor.to("cuda")
-'''
+
 
 #Standard numpy-like indexing and slicing
 tensor = torch.ones(4, 4)
-'''print(f"First row: {tensor[0]}")
+print(f"First row: {tensor[0]}")
 print(f"First column: {tensor[:, 0]}")
-print(f"Last column: {tensor[..., -1]}")'''
+print(f"Last column: {tensor[..., -1]}")
 tensor[:,1] = 0
-'''
+
 #Joining tensors
 t1 = torch.cat([tensor, tensor, tensor], dim=1)
 print(t1)
@@ -96,7 +96,7 @@ print(f"n: {n}")
 t.add_(1)
 print(f"t: {t}")
 print(f"n: {n}")
-'''
+
 
 #Numpy array to tensor
 n = np.ones(5)
