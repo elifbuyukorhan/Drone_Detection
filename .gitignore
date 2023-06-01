@@ -8,3 +8,5 @@
 .ssh/
 .vscode-server/
 data/
+.config
+.gnupg
