@@ -44,7 +44,8 @@ for i in range(1, cols * rows + 1):
     plt.title(labels_map[label])
     plt.axis("off")
     plt.imshow(img.squeeze(), cmap="gray")
-plt.savefig('my_plot1.png')
+plt.savefig('my_plot1')
+plt.close()
 #plt.show()
 
 #Creating a Custom Dataset for your files
@@ -82,6 +83,7 @@ print(f"Labels batch shape: {train_labels.size()}")
 img = train_features[0].squeeze()
 label = train_labels[0]
 plt.imshow(img, cmap="gray")
-plt.savefig('my_plot2.png')
+plt.savefig('my_plot2')
+plt.close()
 #plt.show()
 print(f"Label: {label}")
