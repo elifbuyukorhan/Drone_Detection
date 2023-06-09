@@ -307,18 +307,17 @@ class Darknet(nn.Module):
                 conv_weights = conv_weights.view_as(conv.weight.data)
                 conv.weight.data.copy_(conv_weights)
 
-
 """
 model = Darknet("/home/projects/tutorial5_detector/cfg/yolov3.cfg")
 inp = get_test_input()
 pred = model(inp, torch.cuda.is_available())
-#print (pred)
+print (pred)
 
 model = Darknet("/home/projects/tutorial5_detector/cfg/yolov3.cfg")
 model.load_weights("/home/projects/tutorial5_detector/yolov3.weights")
 """
 
-    
+
 
 
 
