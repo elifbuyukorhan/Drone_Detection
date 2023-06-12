@@ -25,7 +25,7 @@ def parse_cfg(cfgfile):
     network to be built. Block is represented as a dictionary in the list
     
     """
-    file = open(cfgfile, 'r')
+    file = open(cfgfile, 'r', encoding='latin-1')
     lines = file.read().split('\n')                        # store the lines in a list
     lines = [x for x in lines if len(x) > 0]               # get read of the empty lines 
     lines = [x for x in lines if x[0] != '#']              # get rid of comments
