@@ -167,7 +167,7 @@ wget https://pjreddie.com/media/files/yolov3.weights
 ```
 ### Loading Weights
 
-A function called load_weights that is a member function of the `Darknet`class takes one argument other than `self, the path of the weightsfile. 
+A function called load_weights that is a member function of the `Darknet` class takes one argument other than `self, the path of the weightsfile. 
 
 We completed this section with the load_weights function. You can now load weights in your `Darknet` object by calling the `load_weights` function on the darknet object.
 
@@ -180,3 +180,73 @@ model.load_weights("yolov3.weights")
 
 We must subject our output to objectness score thresholding and Non-maximal suppression, to obtain what I will call in the rest of this post as the true detections.  To do that, we will create some functions in the file `util.py`. You can examine these functions from the file `util.py`. I will not explain too much since this part does not need to be tested. You can find the detailed information [here](https://blog.paperspace.com/how-to-implement-a-yolo-v3-object-detector-from-scratch-in-pytorch-part-4/). 
 
+We have built a model which outputs several object detections given an input image. To be precise, our output is a tensor of shape B x 10647 x 85. B is the number of images in a batch, 10647 is the number of bounding boxes predicted per image, and 85 is the number of bounding box attributes.
+
+However, we must subject our output to objectness score thresholding and Non-maximal suppression, to obtain what as the true detections is called, we created a function called `write_results` in the file `util.py`.
+
+The functions takes as as input the `prediction`, `confidence` (objectness score threshold), `num_classes` (80, in our case) and `nms_conf` (the NMS IoU threshold).
+
+Also, there is a function called `bbox_iou` for calculating the IoU in the file `util.py`.
+
+The file detect.py created for tour detector. Neccasary imports done at top of the file detect.py. 
+
+### Creating Command Line Arguments
+
+Since `detect.py` is the file that we will execute to run our detector, it's nice to have command line arguments we can pass to it. I've used python's `ArgParse` module to do that.
+Important flags are `images` (used to specify the input image or directory of images), `det` (Directory to save detections to), `reso` (Input image's resolution, can be used for speed - accuracy tradeoff), `cfg` (alternative configuration file) and `weightfile`.
+
+### Loading the Network
+
+Download the file coco.names from [here](https://raw.githubusercontent.com/ayooshkathuria/YOLO_v3_tutorial_from_scratch/master/data/coco.names?ref=blog.paperspace.com), a file that contains the names of the objects in the COCO dataset. Create a folder `data` in your detector directory. Equivalently, if you're on linux you can type.
+```
+mkdir data
+cd data
+wget https://raw.githubusercontent.com/ayooshkathuria/YOLO_v3_tutorial_from_scratch/master/data/coco.names
+```
+
+The network and load weights are initialized inside the file `detect.py`.
+
+### Reading the input images
+
+The image from the disk, or the images from a directory are read. The paths of the image/images are stored in a list called `imlist`.
+
+`read_dir` is a checkpoint used to measure time. 
+
+We use OpenCV to load the images.
+
+OpenCV loads an image as an numpy array, with BGR as the order of the color channels. PyTorch's image input format is (Batches x Channels x Height x Width), with the channel order being RGB. Therefore, we write the function `prep_image` in `util.py` to transform the numpy array into PyTorch's input format.
+
+we must use a function `letterbox_image` that resizes our image, keeping the aspect ratio consistent, and padding the left out areas with the color (128,128,128). We use the function that takes a OpenCV images and converts it to the input of our network.
+
+### Printing Time Summary
+
+At the end of our detector we will print a summary containing which part of the code took how long to execute. This is useful when we have to compare how different hyperparameters effect the speed of the detector. Hyperparameters such as batch size, objectness confidence and NMS threshold, (passed with `bs`, `confidence`, `nms_thresh` flags respectively) can be set while executing the script `detect.py` on the command line.
+
+### Testing The Object Detector
+
+For example, running on terminal,
+```
+python detect.py --images dog-cycle-car.png --det det
+```
+produces the output
+```
+Loading network.....
+Network successfully loaded
+dog-cycle-car.png    predicted in  1.265 seconds
+Objects Detected:    bicycle truck dog
+----------------------------------------------------------
+SUMMARY
+----------------------------------------------------------
+Task                     : Time Taken (in seconds)
+
+Reading addresses        : 0.000
+Loading batch            : 0.022
+Detection (1 images)     : 1.267
+Output Processing        : 0.000
+Drawing Boxes            : 0.062
+Average time_per_img     : 1.351
+----------------------------------------------------------
+```
+An image with name `det_dog-cycle-car.png` is saved in the `det` directory.
+
+![](/home/projects/tutorial5_detector/det/det_dog-cycle-car.png)
