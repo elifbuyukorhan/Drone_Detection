@@ -249,4 +249,4 @@ Average time_per_img     : 1.351
 ```
 An image with name `det_dog-cycle-car.png` is saved in the `det` directory.
 
-![](/home/projects/tutorial5_detector/det/det_dog-cycle-car.png)
+![](/tutorial5_detector/det/det_dog-cycle-car.png)
