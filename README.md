@@ -104,6 +104,28 @@ Predicted: 1.000 (class=1)
 ### **Other Elements in the Tutorial2 folder**
 <br>
 
+The file `multilayer_perceptron_model.py` includes a simple model example. 
+
+The file can be run in the corresponding directory with the command:
+```
+python multilayer_perceptron_model.py
+```
+Output:
+```
+Sequential(
+  (0): Linear(in_features=8, out_features=12, bias=True)
+  (1): ReLU()
+  (2): Linear(in_features=12, out_features=20, bias=True)
+  (3): ReLU()
+  (4): Linear(in_features=20, out_features=8, bias=True)
+  (5): ReLU()
+  (6): Linear(in_features=8, out_features=1, bias=True)
+  (7): Sigmoid()
+)
+```
+
+<br>
+
 The file `CNN.py` includes a simple example model. 
 Output:
 ```
@@ -121,7 +143,9 @@ Sequential(
   (10): Linear(in_features=512, out_features=10, bias=True)
 )
 ```
+
 <br>
+
 The file `loading_data.py` includes an example related to loading data from torchvision. The dataset that is used is CIFAR-10. It is a dataset of 10 different objects. There is a larger dataset called CIFAR-100, too.
 
 The `torchvision.datasets.CIFAR10` function helps you to download the CIFAR-10 dataset to a local directory. The dataset is divided into training set and test set. You can plot the first 24 images from the downloaded dataset as below. Each image in the dataset is 32×32 pixels picture of one of the following: airplane, automobile, bird, cat, deer, dog, frog, horse, ship, or truck.
@@ -146,7 +170,43 @@ Second outputs:
 
 ![](/tutorial2/CIFAR10-3-testdata.png)
 
+<br>
 
+We can say that `CNN.py` and `loading_data.py` are pre-prepare for the file `training_an_image_classifier.py`. The file `training_an_image_classifier.py` containing these code snippet is created.
+
+The file can be run in the corresponding directory with the command:
+```
+python training_an_image_classifier.py
+```
+
+Output:
+
+```
+Files already downloaded and verified
+Files already downloaded and verified
+Epoch 0: model accuracy 38.47%
+Epoch 1: model accuracy 45.87%
+Epoch 2: model accuracy 48.87%
+Epoch 3: model accuracy 52.98%
+Epoch 4: model accuracy 54.50%
+Epoch 5: model accuracy 56.49%
+Epoch 6: model accuracy 58.19%
+Epoch 7: model accuracy 59.07%
+Epoch 8: model accuracy 60.95%
+Epoch 9: model accuracy 60.90%
+Epoch 10: model accuracy 62.95%
+Epoch 11: model accuracy 63.23%
+Epoch 12: model accuracy 64.52%
+Epoch 13: model accuracy 64.80%
+Epoch 14: model accuracy 65.34%
+Epoch 15: model accuracy 65.78%
+Epoch 16: model accuracy 66.10%
+Epoch 17: model accuracy 66.55%
+Epoch 18: model accuracy 67.45%
+Epoch 19: model accuracy 67.54%
+```
+
+**Note**: We see "Files already downloaded and verified" since I downloaded the dataset before. You can see a different state. The source I completed the tutorial indicate that you should see the model produced can achieve no less than 70% accuracy. However, my output can achieve 67.54% accuracy. The reason of that may be that I train the model a few time with the same dataset. 
 
 ## **Tutorial5 (Detector)**
 
