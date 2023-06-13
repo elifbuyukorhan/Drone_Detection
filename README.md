@@ -99,8 +99,54 @@ Accuracy: 0.931
 Predicted: 1.000 (class=1)
 ```
 
-
 <br>
+
+### **Other Elements in the Tutorial2 folder**
+<br>
+
+The file `CNN.py` includes a simple example model. 
+Output:
+```
+Sequential(
+  (0): Conv2d(3, 32, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+  (1): ReLU()
+  (2): Dropout(p=0.3, inplace=False)
+  (3): Conv2d(32, 32, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+  (4): ReLU()
+  (5): MaxPool2d(kernel_size=(2, 2), stride=(2, 2), padding=0, dilation=1, ceil_mode=False)
+  (6): Flatten(start_dim=1, end_dim=-1)
+  (7): Linear(in_features=8192, out_features=512, bias=True)
+  (8): ReLU()
+  (9): Dropout(p=0.5, inplace=False)
+  (10): Linear(in_features=512, out_features=10, bias=True)
+)
+```
+<br>
+The file `loading_data.py` includes an example related to loading data from torchvision. The dataset that is used is CIFAR-10. It is a dataset of 10 different objects. There is a larger dataset called CIFAR-100, too.
+
+The `torchvision.datasets.CIFAR10` function helps you to download the CIFAR-10 dataset to a local directory. The dataset is divided into training set and test set. You can plot the first 24 images from the downloaded dataset as below. Each image in the dataset is 32×32 pixels picture of one of the following: airplane, automobile, bird, cat, deer, dog, frog, horse, ship, or truck.
+
+The file can be run in the corresponding directory with the command:
+```
+python loading_data.py
+```
+
+**Note**: There are 2 types of loading data in the file loading_data.py. So, one of these types is in the comment. You can remove the comment lines for these outputs. 
+
+First output:
+
+![](/tutorial2/CIFAR10.png)
+
+The CIFAR-10 image from the previous example is indeed in the format of numpy array. But for consumption by a PyTorch model, it needs to be in PyTorch tensors. The PyTorch DataLoader can help you make this process smoother.
+
+In the second code snippet, `trainset` is created with `transform` argument so that the data is converted into PyTorch tensor when it is extracted. This is performed in `DataLoader` the lines following it. The `DataLoader` object is a Python iterable, which you can extract the input (which are images) and target (which are integer class labels).
+
+Second outputs:
+![](/tutorial2/CIFAR10-2-traindata.png)
+
+![](/tutorial2/CIFAR10-3-testdata.png)
+
+
 
 ## **Tutorial5 (Detector)**
 
