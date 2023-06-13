@@ -123,6 +123,118 @@ Sequential(
   (7): Sigmoid()
 )
 ```
+<br>
+
+The file `training_model.py` includes a simple model example. The for-loop is to get a batch of data and feed into the model.  the model’s output and calculate the loss function. Based on the loss function, the optimizer will fine-tune the model for one step, so it can match better to the training data. 
+
+The file can be run in the corresponding directory with the command:
+```
+python training_model.py
+```
+
+Output:
+ ```
+Finished epoch 0, latest loss 0.588100016117096
+Finished epoch 1, latest loss 0.5735946297645569
+Finished epoch 2, latest loss 0.5666378736495972
+Finished epoch 3, latest loss 0.553726851940155
+Finished epoch 4, latest loss 0.539828360080719
+Finished epoch 5, latest loss 0.5264602899551392
+Finished epoch 6, latest loss 0.5032461881637573
+Finished epoch 7, latest loss 0.48828762769699097
+Finished epoch 8, latest loss 0.4559307396411896
+Finished epoch 9, latest loss 0.47892749309539795
+Finished epoch 10, latest loss 0.4608011245727539
+Finished epoch 11, latest loss 0.4507720172405243
+Finished epoch 12, latest loss 0.4314222037792206
+Finished epoch 13, latest loss 0.4552513360977173
+Finished epoch 14, latest loss 0.4473949372768402
+Finished epoch 15, latest loss 0.45897677540779114
+Finished epoch 16, latest loss 0.43454891443252563
+Finished epoch 17, latest loss 0.44270092248916626
+Finished epoch 18, latest loss 0.45161205530166626
+Finished epoch 19, latest loss 0.45822471380233765
+Finished epoch 20, latest loss 0.4451013505458832
+Finished epoch 21, latest loss 0.4551088809967041
+Finished epoch 22, latest loss 0.45340487360954285
+Finished epoch 23, latest loss 0.46186739206314087
+Finished epoch 24, latest loss 0.4533328115940094
+Finished epoch 25, latest loss 0.4497056007385254
+Finished epoch 26, latest loss 0.4420396387577057
+Finished epoch 27, latest loss 0.4501945674419403
+Finished epoch 28, latest loss 0.43279340863227844
+Finished epoch 29, latest loss 0.4181441366672516
+Finished epoch 30, latest loss 0.4197627604007721
+Finished epoch 31, latest loss 0.4104621410369873
+Finished epoch 32, latest loss 0.4067235589027405
+Finished epoch 33, latest loss 0.40461334586143494
+Finished epoch 34, latest loss 0.3968975841999054
+Finished epoch 35, latest loss 0.3886372447013855
+Finished epoch 36, latest loss 0.38487792015075684
+Finished epoch 37, latest loss 0.37768614292144775
+Finished epoch 38, latest loss 0.37914642691612244
+Finished epoch 39, latest loss 0.3789803385734558
+Finished epoch 40, latest loss 0.365925133228302
+Finished epoch 41, latest loss 0.37076759338378906
+Finished epoch 42, latest loss 0.3648814558982849
+Finished epoch 43, latest loss 0.35842764377593994
+Finished epoch 44, latest loss 0.36925649642944336
+Finished epoch 45, latest loss 0.35948944091796875
+Finished epoch 46, latest loss 0.3634781837463379
+Finished epoch 47, latest loss 0.3578653633594513
+Finished epoch 48, latest loss 0.36215946078300476
+Finished epoch 49, latest loss 0.3545094132423401
+Finished epoch 50, latest loss 0.36372455954551697
+Finished epoch 51, latest loss 0.3520985245704651
+Finished epoch 52, latest loss 0.3544931411743164
+Finished epoch 53, latest loss 0.36261212825775146
+Finished epoch 54, latest loss 0.3484041094779968
+Finished epoch 55, latest loss 0.35019978880882263
+Finished epoch 56, latest loss 0.35184431076049805
+Finished epoch 57, latest loss 0.3540416955947876
+Finished epoch 58, latest loss 0.351951003074646
+Finished epoch 59, latest loss 0.3487204313278198
+Finished epoch 60, latest loss 0.35395774245262146
+Finished epoch 61, latest loss 0.34952613711357117
+Finished epoch 62, latest loss 0.3424471318721771
+Finished epoch 63, latest loss 0.35338470339775085
+Finished epoch 64, latest loss 0.34238430857658386
+Finished epoch 65, latest loss 0.3371056616306305
+Finished epoch 66, latest loss 0.3432745337486267
+Finished epoch 67, latest loss 0.3477122187614441
+Finished epoch 68, latest loss 0.3540416955947876
+Finished epoch 69, latest loss 0.3423873782157898
+Finished epoch 70, latest loss 0.3469897508621216
+Finished epoch 71, latest loss 0.3473292887210846
+Finished epoch 72, latest loss 0.3411523401737213
+Finished epoch 73, latest loss 0.3558720052242279
+Finished epoch 74, latest loss 0.3431950509548187
+Finished epoch 75, latest loss 0.3480549156665802
+Finished epoch 76, latest loss 0.33909857273101807
+Finished epoch 77, latest loss 0.35868287086486816
+Finished epoch 78, latest loss 0.34689202904701233
+Finished epoch 79, latest loss 0.34170296788215637
+Finished epoch 80, latest loss 0.3504983186721802
+Finished epoch 81, latest loss 0.34609729051589966
+Finished epoch 82, latest loss 0.35251593589782715
+Finished epoch 83, latest loss 0.3425249457359314
+Finished epoch 84, latest loss 0.3500131368637085
+Finished epoch 85, latest loss 0.3504064977169037
+Finished epoch 86, latest loss 0.3566044867038727
+Finished epoch 87, latest loss 0.34742915630340576
+Finished epoch 88, latest loss 0.3429732322692871
+Finished epoch 89, latest loss 0.34089985489845276
+Finished epoch 90, latest loss 0.34332263469696045
+Finished epoch 91, latest loss 0.34731173515319824
+Finished epoch 92, latest loss 0.3442865014076233
+Finished epoch 93, latest loss 0.3488966226577759
+Finished epoch 94, latest loss 0.34673425555229187
+Finished epoch 95, latest loss 0.3404946029186249
+Finished epoch 96, latest loss 0.33688104152679443
+Finished epoch 97, latest loss 0.34885433316230774
+Finished epoch 98, latest loss 0.3476221263408661
+Finished epoch 99, latest loss 0.33356034755706787
+ ```
 
 <br>
 
@@ -207,6 +319,191 @@ Epoch 19: model accuracy 67.54%
 ```
 
 **Note**: We see "Files already downloaded and verified" since I downloaded the dataset before. You can see a different state. The source I completed the tutorial indicate that you should see the model produced can achieve no less than 70% accuracy. However, my output can achieve 67.54% accuracy. The reason of that may be that I train the model a few time with the same dataset. 
+
+## **Tutorial3**
+
+This tutorial aims to show the difference between CNN and fully connected NN, to understand the structure of convolution, and to examine the effects of the filters on convolution. 
+
+ In the first steps of `CNN.py`, the image to be processed throughout the code has been read and drawn. The drawn image:
+
+ ![tom-bw.png](/tutorial3/tom-bw.png)
+
+
+If we run the code snippets in the comment lines respectively, the below outputs are obtained. The file `plotting.py`includes the functions for plotting convolution applied images. 
+
+The file can be run in the corresponding directory with the command:
+```
+python CNN.py
+```
+
+First output:
+
+![](/tutorial3/plot_conv_1.png)
+
+Second output:
+
+![](/tutorial3/plot_conv_2.png)
+
+Third output:
+
+![](/tutorial3/plot_conv_3.png)
+
+When different number and size of filters are used:
+
+First output:
+![](/tutorial3/plot_convs_1.png)
+
+Second output:
+![](/tutorial3/plot_convs_2.png)
+
+Third output:
+![](/tutorial3/plot_convs_3.png)
+
+If we use a kernel with no padding, our output image will be smaller. If we show by using larger kernel:
+
+![](/tutorial3/plot_convs_4.png)
+
+If we add padding to the outside of the image to avoid this:
+
+![](/tutorial3/plot_convs_5.png)
+
+Finally, if we want to saw how strides influence the size of the output:
+![](/tutorial3/plot_convs_6.png)
+
+When a simple CNN model in PyTorch is made, the below outputs are obtained. (You should run the appropriate part within the code.)
+
+**Note:** The reason why a large part of the code is included in the comment line is that I want it not to reproduce the previous outputs every time I run the code.
+
+Output:
+
+ ```
+ ==========================================================================================
+Layer (type:depth-idx)                   Output Shape              Param #
+==========================================================================================
+├─Sequential: 1-1                        [-1, 1]                   --
+|    └─Conv2d: 2-1                       [-1, 3, 100, 100]         30
+|    └─ReLU: 2-2                         [-1, 3, 100, 100]         --
+|    └─Conv2d: 2-3                       [-1, 2, 100, 100]         56
+|    └─ReLU: 2-4                         [-1, 2, 100, 100]         --
+|    └─Flatten: 2-5                      [-1, 20000]               --
+|    └─Linear: 2-6                       [-1, 1]                   20,001
+==========================================================================================
+Total params: 20,087
+Trainable params: 20,087
+Non-trainable params: 0
+Total mult-adds (M): 0.85
+==========================================================================================
+Input size (MB): 0.04
+Forward/backward pass size (MB): 0.38
+Params size (MB): 0.08
+Estimated Total Size (MB): 0.50
+==========================================================================================
+ ```
+
+It seems that it has too many parameters.
+
+The parameter numbers are reduced by using pooling layer. 
+
+Output:
+
+```
+==========================================================================================
+Layer (type:depth-idx)                   Output Shape              Param #
+==========================================================================================
+├─Sequential: 1-1                        [-1, 1]                   --
+|    └─Conv2d: 2-1                       [-1, 3, 100, 100]         30
+|    └─ReLU: 2-2                         [-1, 3, 100, 100]         --
+|    └─MaxPool2d: 2-3                    [-1, 3, 50, 50]           --
+|    └─Conv2d: 2-4                       [-1, 2, 50, 50]           56
+|    └─ReLU: 2-5                         [-1, 2, 50, 50]           --
+|    └─MaxPool2d: 2-6                    [-1, 2, 25, 25]           --
+|    └─Flatten: 2-7                      [-1, 1250]                --
+|    └─Linear: 2-8                       [-1, 1]                   1,251
+==========================================================================================
+Total params: 1,337
+Trainable params: 1,337
+Non-trainable params: 0
+Total mult-adds (M): 0.41
+==========================================================================================
+Input size (MB): 0.04
+Forward/backward pass size (MB): 0.27
+Params size (MB): 0.01
+Estimated Total Size (MB): 0.31
+==========================================================================================
+``` 
+We reduced that last layer to 1,251 parameters. 
+
+In the last part of the code, the number of parameters between CNN and fully connected NN is compared.
+
+The output by using NN model:
+```
+==========================================================================================
+Layer (type:depth-idx)                   Output Shape              Param #
+==========================================================================================
+├─Sequential: 1-1                        [-1, 1]                   --
+|    └─Sequential: 2-1                   [-1, 256]                 --
+|    |    └─Linear: 3-1                  [-1, 256]                 4,194,560
+|    |    └─ReLU: 3-2                    [-1, 256]                 --
+|    └─Sequential: 2-2                   [-1, 128]                 --
+|    |    └─Linear: 3-3                  [-1, 128]                 32,896
+|    |    └─ReLU: 3-4                    [-1, 128]                 --
+|    └─Sequential: 2-3                   [-1, 64]                  --
+|    |    └─Linear: 3-5                  [-1, 64]                  8,256
+|    |    └─ReLU: 3-6                    [-1, 64]                  --
+|    └─Sequential: 2-4                   [-1, 16]                  --
+|    |    └─Linear: 3-7                  [-1, 16]                  1,040
+|    |    └─ReLU: 3-8                    [-1, 16]                  --
+|    └─Linear: 2-5                       [-1, 1]                   17
+==========================================================================================
+Total params: 4,236,769
+Trainable params: 4,236,769
+Non-trainable params: 0
+Total mult-adds (M): 12.71
+==========================================================================================
+Input size (MB): 0.06
+Forward/backward pass size (MB): 0.00
+Params size (MB): 16.16
+Estimated Total Size (MB): 16.23
+==========================================================================================
+```
+
+The output by using CNN model:
+
+```
+==========================================================================================
+Layer (type:depth-idx)                   Output Shape              Param #
+==========================================================================================
+├─Sequential: 1-1                        [-1, 1]                   --
+|    └─Sequential: 2-1                   [-1, 3, 128, 128]         --
+|    |    └─Conv2d: 3-1                  [-1, 3, 128, 128]         30
+|    |    └─ReLU: 3-2                    [-1, 3, 128, 128]         --
+|    └─Sequential: 2-2                   [-1, 3, 128, 128]         --
+|    |    └─Conv2d: 3-3                  [-1, 3, 128, 128]         84
+|    |    └─ReLU: 3-4                    [-1, 3, 128, 128]         --
+|    └─Sequential: 2-3                   [-1, 3, 128, 128]         --
+|    |    └─Conv2d: 3-5                  [-1, 3, 128, 128]         84
+|    |    └─ReLU: 3-6                    [-1, 3, 128, 128]         --
+|    └─Sequential: 2-4                   [-1, 3, 128, 128]         --
+|    |    └─Conv2d: 3-7                  [-1, 3, 128, 128]         84
+|    |    └─ReLU: 3-8                    [-1, 3, 128, 128]         --
+|    └─Sequential: 2-5                   [-1, 3, 128, 128]         --
+|    |    └─Conv2d: 3-9                  [-1, 3, 128, 128]         84
+|    |    └─ReLU: 3-10                   [-1, 3, 128, 128]         --
+|    └─Flatten: 2-6                      [-1, 49152]               --
+|    └─Linear: 2-7                       [-1, 1]                   49,153
+==========================================================================================
+Total params: 49,519
+Trainable params: 49,519
+Non-trainable params: 0
+Total mult-adds (M): 5.85
+==========================================================================================
+Input size (MB): 0.06
+Forward/backward pass size (MB): 1.88
+Params size (MB): 0.19
+Estimated Total Size (MB): 2.13
+==========================================================================================
+```
+
 
 ## **Tutorial5 (Detector)**
 
