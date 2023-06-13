@@ -1,12 +1,113 @@
-# Drone Detection 
+# **Drone Detection** 
+
+## **Tutorial2**
+
+The focus of this tutorial is on using the PyTorch API for common deep learning model development tasks.
+
+### **How to Install PyTorch**
+
+Before installing PyTorch, ensure that you have Python installed, such as Python 3.6 or higher. The most common, and perhaps simplest, way to install PyTorch on your workstation is by using pip.
+
+For example, on the command line, you can type:
+```
+sudo pip install torch
+```
+Perhaps the most popular application of deep learning is for computer vision, and the PyTorch computer vision package is called “torchvision.”
+
+Installing torchvision is also highly recommended and it can be installed as follows:
+```
+sudo pip install torchvision
+```
+
+### **PyTorch Deep Learning Model Life-Cycle**
+
+A model has a life-cycle, and this very simple knowledge provides the backbone for both modeling a dataset and understanding the PyTorch API.
+
+The five steps in the life-cycle are as follows:
+
+1. Prepare the Data
+2. Define the Model
+3. Train the Model
+4. Evaluate the Model
+5. Make Predictions
+
+### Step1: Prepare the Data
+
+The first step is to load and prepare your data.
+
+Neural network models require numerical input data and numerical output data.
+PyTorch provides the Dataset class that you can extend and customize to load your dataset.
+Once loaded, PyTorch provides the DataLoader class to navigate a Dataset instance during the training and evaluation of your model.
+
+A DataLoader instance can be created for the training dataset, test dataset, and even a validation dataset.
+
+The `random_split()` function can be used to split a dataset into train and test sets. Once split, a selection of rows from the Dataset can be provided to a DataLoader, along with the batch size and whether the data should be shuffled every epoch.
+
+### Step2: Define the Model
+The next step is to define a model.The idiom for defining a model in PyTorch involves defining a class that extends the Module class.
+
+The constructor of your class defines the layers of the model and the forward() function is the override that defines how to forward propagate input through the defined layers of the model.
+
+### Step3: Train the Model
+The training process requires that you define a loss function and an optimization algorithm. 
+Training the model involves enumerating the DataLoader for the training dataset.
+
+First, a loop is required for the number of training epochs. Then an inner loop is required for the mini-batches for stochastic gradient descent.
+
+Each update to the model involves the same general pattern comprised of:
+* Clearing the last error gradient.
+* A forward pass of the input through the model.
+* Calculating the loss for the model output.
+* Backpropagating the error through the model.
+* Update the model in an effort to reduce loss.
+
+### Step4: Evaluate the model
+
+Once the model is fit, it can be evaluated on the test dataset.
+
+This can be achieved by using the DataLoader for the test dataset and collecting the predictions for the test set, then comparing the predictions to the expected values of the test set and calculating a performance metric.
+
+### Step5: Make predictions
+A fit model can be used to make a prediction on new data.
+
+For example, you might have a single image or a single row of data and want to make a prediction.
+
+<br>
 
 
-## Tutorial5 (Detector)
+### **Implementation**
+We used the Ionosphere binary (two class) classification dataset to demonstrate an MLP for binary classification.
+This dataset involves predicting whether there is a structure in the atmosphere or not given radar returns.
+
+The dataset will be downloaded automatically using Pandas, but you can learn more about it here.
+
+* [Ionosphere Dataset (csv)](https://raw.githubusercontent.com/jbrownlee/Datasets/master/ionosphere.csv)
+* [Ionosphere Dataset Description](https://raw.githubusercontent.com/jbrownlee/Datasets/master/ionosphere.names)
+
+We used a [LabelEncoder](https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.LabelEncoder.html) to encode the string labels to integer values 0 and 1. The model will be fit on 67 percent of the data, and the remaining 33 percent will be used for evaluation, split using the [train_test_split()](https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.train_test_split.html) function.
+
+The complete example containing all the steps is included in the `MLP_for_binary_classification(Ionosphere).py` file. The file can be run in the corresponding directory with the command:
+```
+python MLP_for_binary_classification\(Ionosphere\).py
+```
+Running the example first reports the shape of the train and test datasets, then fits the model and evaluates it on the test dataset. Finally, a prediction is made for a single row of data.
+
+An output like this can be expected:
+```
+235 116
+Accuracy: 0.931
+Predicted: 1.000 (class=1)
+```
+
+
+<br>
+
+## **Tutorial5 (Detector)**
 
 
 The main point of the tutorial is to create a YOLO(v3) object detector structure. First I created a folder called tutorial5_detector that has my pyhton files and other files related to the tutorial. Then, I created a file called darknet.py in my detector folder. Darknet is the name of the underlying architecture of YOLO. This file contains the code that creates the YOLO network. We supplemented it with a file util.py whic contains the code for various helper functions.
 
-### Configuration File
+### **Configuration File**
 The official code uses a configuration file to build the network.The cfg file describes the layout of the network, block by block. 
 
 I used the official `cfg` file, released by the author to build my network. Download it from [here](https://github.com/elifbuyukorhan/Drone_Detection/tree/devel/tutorial5_detector/cfg) and place it in a folder called `cfg` inside your detector directory. If you're on Linux, `cd` into your network directory and type:
@@ -48,11 +149,11 @@ from=-3
 activation=linear
 ```
 
-### Parsing the configuration file
+### **Parsing the configuration file**
  
 There are a function called parse_cfg which takes the path of the configuration file as the input inside darknet.py file. The idea here is to parse the cfg, and **store every block as a dict**. The attributes of the blocks and their values are stored as key-value pairs in the dictionary. As we parse through the cfg, we keep appending these dicts, denoted by the variable block in our code, to a list blocks. Our function will return this block.
 
-### Creating the building blocks
+### **Creating the building blocks**
 
 We have 5 types of layers in the list (mentioned above). PyTorch provides pre-built layers for types `convolutional` and `upsample`. We will have to write our own modules for the rest of the layers by extending the nn.Module class.
 
@@ -60,7 +161,7 @@ The create_modules function takes a list blocks returned by the parse_cfg functi
 
 You can find the detailed information about the modules [here](https://blog.paperspace.com/how-to-implement-a-yolo-v3-object-detector-from-scratch-in-pytorch-part-2/). 
 
-### Testing Code
+### **Testing Code**
 
 You can test the code by removing comment mark from in my code. The piece of code is located under the `create_modules` function.
 ```
@@ -93,7 +194,7 @@ You will see a long list, (exactly containing 106 items), the elements of which 
 
   ```
 
-### Defining The Network
+### **Defining The Network**
 
 In this part of the tutorial, we are going to implement the network architecture of YOLO in PyTorch, so that we can produce an output given an image.
 
@@ -111,7 +212,7 @@ Since route and shortcut layers need output maps from previous layers, we cache 
 
 As was the case with `create_modules` function, we now iterate over `module_list` which contains the modules of the network. The thing to notice here is that the modules have been appended in the same order as they are present in the configuration file. This means, we can simply run our input through each module to get our output.
 
-### Transforming the output
+### **Transforming the output**
 
 The outputs of YOLO layer happen at three scales, the dimensions of the prediction maps will be different. Although the dimensions of the three feature maps are different, the output processing operations to be done on them are similar. It would be nice to have to do these operations on a single tensor, rather than three separate tensors.
 
@@ -121,7 +222,7 @@ The function `predict_transform` lives in the file `util.py` and we imported the
 
 You can visit the link related to predict_transform function [here](https://blog.paperspace.com/how-to-implement-a-yolo-v3-object-detector-from-scratch-in-pytorch-part-3/). 
 
-### Testing the forward pass
+### **Testing the forward pass**
 
 There is a function that creates a input called get_test_input at the top of darknet.py. We will pass this input to our network. You can save this [image](https://raw.githubusercontent.com/elifbuyukorhan/Drone_Detection/devel/tutorial5_detector/dog-cycle-car.png?token=GHSAT0AAAAAACDEMPNPMVUIW3LRTXYGLU3KZEDED6A) into your working directory . If you're on linux, then type.
 
@@ -158,14 +259,14 @@ The shape of this tensor is `1 x 10647 x 85`. The first dimension is the batch s
 
 At this point, our network has random weights, and will not produce the correct output. We need to load a weight file in our network. We'll be making use of the official weight file for this purpose.
 
-### Downloading the Pre-trained Weights
+### **Downloading the Pre-trained Weights**
 
 Download the weights file into your detector directory. Grab the weights file from [here](https://pjreddie.com/media/files/yolov3.weights?ref=blog.paperspace.com). Or if you're on linux,
 
 ```
 wget https://pjreddie.com/media/files/yolov3.weights
 ```
-### Loading Weights
+### **Loading Weights**
 
 A function called load_weights that is a member function of the `Darknet` class takes one argument other than `self, the path of the weightsfile. 
 
@@ -190,12 +291,12 @@ Also, there is a function called `bbox_iou` for calculating the IoU in the file 
 
 The file detect.py created for tour detector. Neccasary imports done at top of the file detect.py. 
 
-### Creating Command Line Arguments
+### **Creating Command Line Arguments**
 
 Since `detect.py` is the file that we will execute to run our detector, it's nice to have command line arguments we can pass to it. I've used python's `ArgParse` module to do that.
 Important flags are `images` (used to specify the input image or directory of images), `det` (Directory to save detections to), `reso` (Input image's resolution, can be used for speed - accuracy tradeoff), `cfg` (alternative configuration file) and `weightfile`.
 
-### Loading the Network
+### **Loading the Network**
 
 Download the file coco.names from [here](https://raw.githubusercontent.com/ayooshkathuria/YOLO_v3_tutorial_from_scratch/master/data/coco.names?ref=blog.paperspace.com), a file that contains the names of the objects in the COCO dataset. Create a folder `data` in your detector directory. Equivalently, if you're on linux you can type.
 ```
@@ -218,7 +319,7 @@ OpenCV loads an image as an numpy array, with BGR as the order of the color chan
 
 we must use a function `letterbox_image` that resizes our image, keeping the aspect ratio consistent, and padding the left out areas with the color (128,128,128). We use the function that takes a OpenCV images and converts it to the input of our network.
 
-### Printing Time Summary
+### **Printing Time Summary**
 
 At the end of our detector we will print a summary containing which part of the code took how long to execute. This is useful when we have to compare how different hyperparameters effect the speed of the detector. Hyperparameters such as batch size, objectness confidence and NMS threshold, (passed with `bs`, `confidence`, `nms_thresh` flags respectively) can be set while executing the script `detect.py` on the command line.
 
