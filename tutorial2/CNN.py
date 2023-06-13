@@ -15,6 +15,4 @@ model = nn.Sequential(
 )
 print(model)
 
-#You didn’t specify the input image size in the model but indeed it is fixed to 32×32 pixels in RGB (i.e., 3 color channels). 
-#Where is this fixed in the network?
 
