@@ -42,6 +42,7 @@ plot_convs(image, conv_layer)
 conv_layer = torch.nn.Conv2d(1, 2, kernel_size=(3, 3))
 plot_convs(image, conv_layer)
 
+
 # 3 kernels of (5,5)
 conv_layer = torch.nn.Conv2d(1, 3, kernel_size=(5, 5))
 plot_convs(image, conv_layer)
@@ -147,5 +148,10 @@ class CNN(torch.nn.Module):
         out = self.main(x)
         return out
     
+model = NN(input_size=128 * 128)
+summary(model, (128 * 128,))
+
+'''
 model = CNN(input_channels=1)
 summary(model, (1, 128, 128))
+'''
