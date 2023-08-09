@@ -1,1 +1,15 @@
-**/data
+**/.cache/
+**/.dotnet/
+**/.gitconfig
+**/.ipynb_checkpoints/
+**/.ipython/
+**/.jupyter/
+**/.local/
+**/.ssh/
+**/.vscode-server/
+**/data/
+**/.config
+**/.gnupg
+**/.keras
+**/yolov3_weights
+**/__pycache__
